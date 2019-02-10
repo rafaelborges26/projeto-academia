@@ -1,0 +1,191 @@
+#all
+{
+
+margin: 0px;
+width: 100%;
+height: 100%;
+}
+
+#pessoais
+{
+	width: 100%;
+    height: 16%;	
+}
+
+#treino
+{
+	width: 100%;
+    height: 68%;
+}
+
+
+#triceps
+{
+    width: 14%;
+    height: 56%;
+    margin-left: 60px;
+    margin-top: 78px;
+	
+}
+
+#repetetriceps
+{
+	width: 6%;
+    height: 54%; 
+    padding: 0%;
+    margin-left: 253px;
+    margin-top: -264px;
+}
+
+#cargatriceps
+{
+	width: 6%;
+    height: 54%; 
+    padding: 0%;
+    margin-left: 331px;
+    margin-top: -257px;
+
+}
+
+#biceps
+{
+    width: 14%;
+    height: 56%;
+    margin-left: 459px;
+    margin-top: -257px;
+}
+
+#repetebiceps
+{
+    width: 8%;
+    height: 48%;
+    padding: 0%;
+    margin-left: 652px;
+    margin-top: -264px;
+}
+
+#cargabiceps
+{
+    width: 6%;
+    height: 54%; 
+    padding: 0%;
+    margin-left: 729px;
+    margin-top: -231px;
+
+}
+
+#peito
+{
+    width: 14%;
+    height: 56%;
+    margin-left: 859px;
+    margin-top: -257px;
+}
+
+#repetepeito
+{
+	width: 8%;
+    height: 48%; 
+    padding: 0%;
+    margin-left: 1052px;
+    margin-top: -264px;
+
+}
+
+#cargapeito
+{
+    width: 6%;
+    height: 54%; 
+    padding: 0%;
+    margin-left: 1156px;
+    margin-top: -232px;
+
+}
+
+#costas
+{
+    width: 14%;
+    height: 66%;
+    margin-left: 60px;
+    margin-top: -15px;
+}
+
+#repetecostas
+{
+    width: 8%;
+    height: 48%; 
+    padding: 0%;
+    margin-left: 253;
+    margin-top: -308px;
+}
+
+#cargacostas
+{
+    width: 6%;
+    height: 54%; 
+    padding: 0%;
+    margin-left: 331px;
+    margin-top: -231px;
+
+}
+
+#perna
+{
+    width: 14%;
+    height: 66%;
+    margin-left: 459px;
+    margin-top: -257px;
+}
+
+
+#repeteperna
+{
+    width: 4%;
+    height: 48%; 
+    padding: 0%;
+    margin-left: 652px;
+    margin-top: -308px;
+}
+
+#cargaperna
+{
+    width: 6%;
+    height: 54%; 
+    padding: 0%;
+    margin-left: 729px;
+    margin-top: -231px;
+
+}
+
+#abdomem
+{
+
+    width: 14%;
+    height: 66%;
+    margin-left: 859px; 
+    margin-top: -257px;
+}
+
+#repeteabdomem
+{
+    width: 4%;
+    height: 54%; 
+    padding: 0%;
+    margin-left: 1052px;
+    margin-top: -307px;
+}
+
+#cargaabdomem
+{
+    width: 6%;
+    height: 54%; 
+    padding: 0%;
+    margin-left: 1156px;
+    margin-top: -258px;
+
+}
+
+
+
+
+
