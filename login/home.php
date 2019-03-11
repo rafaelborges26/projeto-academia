@@ -282,9 +282,10 @@ if($error == true)
 //select das informaçoes testeeaca
 
 //////////////////////testes
-
+//pegar todos os registros apos o cadastro e jogar na tela.
 $query = $link->query("SELECT * FROM tb_user where cd_user = $iduser");
-while($reg = $query->fetch_array()) {
+while($reg = $query->fetch_array()) 
+{
     echo $reg["qt_kg"];
 }
 //$TESTT = (mysql_query("select  from tb_user where "));
