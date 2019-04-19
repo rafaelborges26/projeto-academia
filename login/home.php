@@ -40,7 +40,7 @@ $sexo     = $_POST['sexo'];
 $cdsenha    = $_POST['cdsenha'];
 
 //virara um cont automatico igual o do user
-$iddbiceps =1;
+$iddbiceps =2;
 $iddtriceps =1;
 $iddpeito =1;
 $iddcostas =1;
@@ -178,12 +178,12 @@ else
 
 ?>
 </head>
-
+<link rel="stylesheet" href="home.css">
 <body>
 
 <div id="header">
 
-<h2 aling="center" >PERFIL DO ATLETA $nameall</h2>
+<h2>ROTINAS DE TREINOS</h2>
 
 </div>
 
@@ -192,12 +192,10 @@ else
 <?php
 
 
+//inserir registros
 
-
-//popular tabs
-
-$inseretriceps = $link->query("insert into tb_triceps (cd_triceps, nm_triceps, ds_treino, qt_carga, qt_repeticoes, qt_vezes)
-values ($iddtriceps, 'testee', 'teste', '30', '10','1')");
+$inseretriceps = $link->query("insert into tb_triceps (nm_triceps, ds_treino, qt_carga, qt_repeticoes, qt_vezes)
+values ('testee', 'teste', '30', '10','1')");
 $idtriceps = mysqli_insert_id($link);
 
 if(!$inseretriceps)
@@ -275,19 +273,45 @@ if($error == true)
 {
     echo "Erro ".$msgerro; 
     var_dump($link->error);
-
 }
 
+//inserir os cds 
 
-//select das informaçoes testeeaca
-
-//////////////////////testes
-//pegar todos os registros apos o cadastro e jogar na tela.
-$query = $link->query("SELECT * FROM tb_user where cd_user = $iduser");
-while($reg = $query->fetch_array()) 
+$insereidtriceps = $link->query("insert into tb_triceps cd_triceps values ($iduser)");
+if(!$insereidtriceps)
 {
-    echo $reg["qt_kg"];
+    //var_dump($link->error);
+    $error = true;
 }
+
+
+
+
+
+//select das informaçoes 
+//tera que aparecer apos o cadastro e apos o login pegar o id do user e fazer
+//////////////////////testes
+
+//pegar todos os registros apos o cadastro e jogar na tela.
+
+//querys
+$queryuser = $link->query("SELECT * FROM tb_user where cd_user = $iduser");
+//ajustar o id para setar o id do usuario nele cd_triceps = id_user no bd para nao perder vinculo
+//do usuario com os treinos
+//$querytriceps = $link->query("SELECT * FROM tb_triceps where id_user = $idtriceps");
+//$querytriceps = $link->query("SELECT * FROM tb_triceps where id_triceps = $id_user");
+
+
+while($reguser = $queryuser->fetch_array()) 
+{
+    echo "<h2>Seu cadastro foi Confirmado com exito ".$reguser["nm_user"]."</h2>";
+}
+
+while($regtriceps = $querytriceps->fetch_array())
+{
+    echo $regtriceps["nm_triceps"];
+}
+
 //$TESTT = (mysql_query("select  from tb_user where "));
 //echo $query;
 
