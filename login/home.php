@@ -2,6 +2,8 @@
 
 <head>
 <link href="style.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <?php
 
 header("Content-Type: text/html; charset=ISO-8859-1", true);    
@@ -44,7 +46,7 @@ $iddbiceps =2;
 $iddtriceps =1;
 $iddpeito =1;
 $iddcostas =1;
-$idabdomem =1;
+$iddabdomem =1;
 $iddperna = 1;
 
 $triceps1 = $_POST['triceps1'];
@@ -192,7 +194,7 @@ else
 <?php
 
 
-//inserir registros
+//INSERIR OS DADOS NO BD"""""""""""
 
 $inseretriceps = $link->query("insert into tb_triceps (nm_triceps, ds_treino, qt_carga, qt_repeticoes, qt_vezes)
 values ('testee', 'teste', '30', '10','1')");
@@ -246,8 +248,8 @@ if(!$insereperna)
 
 //ok
 $insereabdomem = $link->query("insert into tb_abdomem (cd_abdomem, nm_abdomem, ds_treino, qt_carga, qt_repeticoes, qt_vezes)
-values ($idabdomem, 'testee', 'testee', '30', '10','1')");
-$idabd = mysqli_insert_id($link);
+values ($iddabdomem, 'testee', 'testee', '30', '10','1')");
+$idabdomem = mysqli_insert_id($link);
 
 if(!$insereabdomem)
 {
@@ -258,7 +260,7 @@ if(!$insereabdomem)
 
 $insereuser = $link->query("insert into tb_user (cd_biceps, cd_triceps, cd_abdomem, cd_peito, 
 cd_costas, cd_perna, nm_user, cd_senha,  dt_ano, qt_kg, sg_sexo) 
-values ('$idbiceps', '$idtriceps', '$idabd','$idpeito', '$idcostas', '$idperna',
+values ('$idbiceps', '$idtriceps', '$idabdomem','$idpeito', '$idcostas', '$idperna',
 '$name', '$cdsenha', '$ano', '$peso', '$sexo')");
  $iduser = mysqli_insert_id($link);
 
@@ -292,25 +294,140 @@ if(!$insereidtriceps)
 //tera que aparecer apos o cadastro e apos o login pegar o id do user e fazer
 //////////////////////testes
 
+
+
 //pegar todos os registros apos o cadastro e jogar na tela.
+//ja temos todos os registros do BD no fonte.
 
-//querys
+//id do user
 $queryuser = $link->query("SELECT * FROM tb_user where cd_user = $iduser");
-//ajustar o id para setar o id do usuario nele cd_triceps = id_user no bd para nao perder vinculo
-//do usuario com os treinos
-//$querytriceps = $link->query("SELECT * FROM tb_triceps where id_user = $idtriceps");
-//$querytriceps = $link->query("SELECT * FROM tb_triceps where id_triceps = $id_user");
-
 
 while($reguser = $queryuser->fetch_array()) 
 {
     echo "<h2>Seu cadastro foi Confirmado com exito ".$reguser["nm_user"]."</h2>";
 }
 
+//TRICEPS
+$querytriceps = $link->query("SELECT * FROM tb_triceps where id_triceps = $idtriceps");
+
 while($regtriceps = $querytriceps->fetch_array())
 {
     echo $regtriceps["nm_triceps"];
 }
+
+echo"<BR>";
+
+//BICEPS
+$querybiceps = $link->query("SELECT * FROM tb_biceps where id_biceps = $idbiceps");
+
+while($regbiceps = $querybiceps->fetch_array())
+{
+    echo $regbiceps["nm_biceps"];
+}
+
+echo"<BR>";
+
+//PEITO
+$querypeito = $link->query("SELECT * FROM tb_peito where id_peito = $idpeito");
+
+while($regpeito = $querypeito->fetch_array())
+{
+    echo $regpeito["nm_peito"];
+}
+
+echo"<BR>";
+
+//COSTAS
+$querycostas = $link->query("SELECT * FROM tb_costas where id_costas = $idcostas");
+
+while($regcostas = $querycostas->fetch_array())
+{
+    echo $regcostas["nm_costas"];
+}
+
+echo "<BR>";
+
+//PERNA
+$queryperna = $link->query("SELECT * FROM tb_perna where id_perna = $idperna");
+
+while($regperna = $queryperna->fetch_array())
+{
+    echo $regperna["nm_perna"];
+}
+
+echo "<BR>";
+
+//ABDOMEM
+$queryabdomem = $link->query("SELECT * FROM tb_abdomem where id_abdomem = $idabdomem");
+
+while($regabdomem = $queryabdomem->fetch_array())
+{
+    $nmabdomem = $regabdomem["nm_abdomem"];
+    $dstreino = $regabdomem["ds_treino"];
+    $qtcarga = $regabdomem["qt_carga"];
+    $qtrepeticoes = $regabdomem["qt_repeticoes"];
+}
+
+echo $nmabdomem;
+?>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Triceps</th>
+      <th scope="col">Biceps</th>
+      <th scope="col">Costas/Ombro</th>
+      <th scope="col">Peito</th>
+      <th scope="col">Perna</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="table-dark">
+      <td><?php echo $nmabdomem?></td>
+      <td>Column content</td>
+      <td>Column content</td>
+      <td>Column content</td>
+      <td>Column content</td>
+    </tr>
+    <tr class="table-dark">
+      <td>Column content</td>
+      <td>Column content</td>
+      <td>Column content</td>
+      <td>Column content</td>
+      <td>Column content</td>
+    </tr>
+    <tr class="table-dark">
+      <td>Column content</td>
+      <td>Column content</td>
+      <td>Column content</td>
+      <td>Column content</td>
+      <td>Column content</td>
+    </tr>
+    <tr class="table-dark">
+      <td>Column content</td>
+      <td>Column content</td>
+      <td>Column content</td>
+      <td>Column content</td>
+      <td>Column content</td>
+    </tr>
+    <tr class="table-dark">
+      <td>Column content</td>
+      <td>Column content</td>
+      <td>Column content</td>
+      <td>Column content</td>
+      <td>Column content</td>
+    </tr>
+  </tbody>
+</table> 
+    
+<?php
+
+
+
+
+
+
+
 
 //$TESTT = (mysql_query("select  from tb_user where "));
 //echo $query;
@@ -385,5 +502,6 @@ if (strtoupper($opTreino) == "A" )
 <body>
 
 </html>
+
 
 
