@@ -195,96 +195,448 @@ else
 
 
 //INSERIR OS DADOS NO BD"""""""""""
+//varios inserts para cada treino usando while para isso informar o nome dos treinos no tb_triceps
+$repetevezes = 1;
 
-$inseretriceps = $link->query("insert into tb_triceps (nm_triceps, ds_treino, qt_carga, qt_repeticoes, qt_vezes)
-values ('testee', 'teste', '30', '10','1')");
-$idtriceps = mysqli_insert_id($link);
-
-if(!$inseretriceps)
+while($repetevezes <= 5)
 {
-    //var_dump($link->error);
-    $error = true;
-}
 
-$inserebiceps = $link->query("insert into tb_biceps (cd_biceps ,nm_biceps, ds_treino, qt_carga, qt_repeticoes, qt_vezes)
-values ($iddbiceps, 'testee', 'testee', '30', '10','1')");
-$idbiceps = mysqli_insert_id($link);
+    switch($repetevezes)
 
-if(!$inserebiceps)
-{
-    $error = true;
-    var_dump($error);    
-}
+    {
 
-$inserepeito = $link->query("insert into tb_peito (cd_peito, nm_peito, ds_treino, qt_carga, qt_repeticoes, qt_vezes)
-values ($iddpeito, 'testee', 'testee', '30', '10','1')");
-$idpeito = mysqli_insert_id($link);
-if(!$inserepeito)
-{
-    $error = true;
-}
+    case 1:
+        $inseretriceps = $link->query("insert into tb_triceps (cd_triceps,nm_triceps, qt_carga, qt_repeticoes, qt_vezes)
+        values ($repetevezes,'$triceps1',$cargatriceps1,$repeticoestriceps1,'1')");
+        $idtriceps1 = mysqli_insert_id($link);
 
-$inserecostas = $link->query("insert into tb_costas (cd_costas ,nm_costas, ds_treino, qt_carga, qt_repeticoes, qt_vezes)
-values ($iddcostas ,'testee', 'testee', '30', '10','1')");
-$idcostas = mysqli_insert_id($link);
+        if(!$inseretriceps)
+        {
+            //var_dump($link->error); 
+            $error = true;
+        }
 
-if(!$inserecostas)
-{
-    $error = true;       
-    var_dump($error);        
-}
+        $inserebiceps = $link->query("insert into tb_biceps (cd_biceps ,nm_biceps, qt_carga, qt_repeticoes, qt_vezes)
+        values ($repetevezes,'$biceps1',$cargabiceps1,$repeticoesbiceps1,'1')");
+        $idbiceps1 = mysqli_insert_id($link);
 
+        if(!$inserebiceps)
+        {
+            $error = true;
+            var_dump($error);    
+        }
 
-$insereperna = $link->query("insert into tb_perna (cd_perna, nm_perna, ds_treino, qt_carga, qt_repeticoes, qt_vezes)
-values ($iddperna, 'testee', 'testee', '30', '10','1')");
-$idperna = mysqli_insert_id($link);
+        $inserepeito = $link->query("insert into tb_peito (cd_peito, nm_peito, qt_carga, qt_repeticoes, qt_vezes)
+        values ($repetevezes,'$peito1',$cargapeito1,$repeticoespeito1,'1')");
+        $idpeito1 = mysqli_insert_id($link);
+        if(!$inserepeito)
+        {
+            $error = true;
+        }
 
-if(!$insereperna)
-{
-    $error = true;
-    var_dump($error);    
+        $inserecostas = $link->query("insert into tb_costas (cd_costas ,nm_costas, qt_carga, qt_repeticoes, qt_vezes)
+        values ($repetevezes,'$costas1',$cargacostas1,$repeticoescostas1,'1')");
+        $idcostas1 = mysqli_insert_id($link);
+
+        if(!$inserecostas)
+        {
+            $error = true;       
+            var_dump($error);        
+        }
+
+        $insereperna = $link->query("insert into tb_perna (cd_perna, nm_perna, qt_carga, qt_repeticoes, qt_vezes)
+        values ($repetevezes,'$perna1',$cargaperna1,$repeticoesperna1,'1')");
+        $idperna1 = mysqli_insert_id($link);
+
+        if(!$insereperna)
+        {
+            $error = true;
+            var_dump($error);    
+        }
+
+        $insereabdomem = $link->query("insert into tb_abdomem (cd_abdomem, nm_abdomem, qt_carga, qt_repeticoes, qt_vezes)
+        values ($repetevezes,'$abdomem1',$cargaabdomem1,$repeticoesabdomem1,'1')");
+        $idabdomem1 = mysqli_insert_id($link);
+
+        if(!$insereabdomem)
+        {
+            $error = true;
+            var_dump($error);    
+        }
+
+        $insereuser = $link->query("insert into tb_user (cd_biceps, cd_triceps, cd_abdomem, cd_peito, 
+        cd_costas, cd_perna, nm_user, cd_senha,  dt_ano, qt_kg, sg_sexo) 
+        values ('$idbiceps1', '$idtriceps1', '$idabdomem1','$idpeito1', '$idcostas1', '$idperna1',
+        '$name', '$cdsenha', '$ano', '$peso', '$sexo')");
+         $iduser1 = mysqli_insert_id($link);
+
+        if(!$insereuser)
+        {
+            $error = true;
+                //decrementa user
+                var_dump($error);    
+        }
+
+        if($error == true)
+        {
+            echo "Erro ".$msgerro; 
+            var_dump($link->error);
+        }
+
+        break;
+
+    case 2:
     
+        $inseretriceps = $link->query("insert into tb_triceps (cd_triceps,nm_triceps, qt_carga, qt_repeticoes, qt_vezes)
+        values ('$repetevezes','$triceps2',$cargatriceps2,$repeticoestriceps2,'1')");
+        $idtriceps2 = mysqli_insert_id($link);
+        
+        if(!$inseretriceps)
+        {
+            //var_dump($link->error);
+            $error = true;
+        }
+
+        $inserebiceps = $link->query("insert into tb_biceps (cd_biceps ,nm_biceps, qt_carga, qt_repeticoes, qt_vezes)
+        values ($repetevezes,'$biceps2',$cargabiceps2,$repeticoesbiceps2,'1')");
+        $idbiceps2 = mysqli_insert_id($link);
+
+        if(!$inserebiceps)
+        {
+            $error = true;
+            var_dump($error);    
+        }   
+
+        $inserepeito = $link->query("insert into tb_peito (cd_peito, nm_peito, qt_carga, qt_repeticoes, qt_vezes)
+        values ($repetevezes,'$peito2',$cargapeito2,$repeticoespeito2,'1')");
+        $idpeito2 = mysqli_insert_id($link);
+        if(!$inserepeito)
+        {
+            $error = true;
+        }
+
+        $inserecostas = $link->query("insert into tb_costas (cd_costas ,nm_costas, qt_carga, qt_repeticoes, qt_vezes)
+        values ($repetevezes,'$costas2',$cargacostas2,$repeticoescostas2,'1')");
+        $idcostas2 = mysqli_insert_id($link);
+
+        if(!$inserecostas)
+        {
+            $error = true;       
+            var_dump($error);        
+        }
+
+        $insereperna = $link->query("insert into tb_perna (cd_perna, nm_perna, qt_carga, qt_repeticoes, qt_vezes)
+        values ($repetevezes,'$perna2',$cargaperna2,$repeticoesperna2,'1')");
+        $idperna2 = mysqli_insert_id($link);
+
+        if(!$insereperna)
+        {
+            $error = true;
+            var_dump($error);    
+        }
+
+        $insereabdomem = $link->query("insert into tb_abdomem (cd_abdomem, nm_abdomem, qt_carga, qt_repeticoes, qt_vezes)
+        values ($repetevezes,'$abdomem2',$cargaabdomem2,$repeticoesabdomem2,'1')");
+        $idabdomem2 = mysqli_insert_id($link);
+
+        if(!$insereabdomem)
+        {
+            $error = true;
+            var_dump($error);    
+        }
+
+        $insereuser = $link->query("insert into tb_user (cd_biceps, cd_triceps, cd_abdomem, cd_peito, 
+        cd_costas, cd_perna, nm_user, cd_senha,  dt_ano, qt_kg, sg_sexo) 
+        values ('$idbiceps2', '$idtriceps2', '$idabdomem2','$idpeito2', '$idcostas2', '$idperna2',
+        '$name', '$cdsenha', '$ano', '$peso', '$sexo')");
+         $iduser2 = mysqli_insert_id($link);
+
+        if(!$insereuser)
+        {
+            $error = true;
+                //decrementa user
+                var_dump($error);    
+        }
+
+        if($error == true)
+        {
+            echo "Erro ".$msgerro; 
+            var_dump($link->error);
+        }
+
+        break;
+
+    case 3:
+
+    $inseretriceps = $link->query("insert into tb_triceps (cd_triceps,nm_triceps, qt_carga, qt_repeticoes, qt_vezes)
+        values ($repetevezes,'$triceps3',$cargatriceps3,$repeticoestriceps3,'1')");
+        $idtriceps3 = mysqli_insert_id($link);
+
+        if(!$inseretriceps)
+        {
+            //var_dump($link->error);
+            $error = true;
+        }
+
+        $inserebiceps = $link->query("insert into tb_biceps (cd_biceps ,nm_biceps, qt_carga, qt_repeticoes, qt_vezes)
+        values ($repetevezes,'$biceps3',$cargabiceps3,$repeticoesbiceps3,'1')");
+        $idbiceps3 = mysqli_insert_id($link);
+
+        if(!$inserebiceps)
+        {
+            $error = true;
+            var_dump($error);    
+        }
+
+        $inserepeito = $link->query("insert into tb_peito (cd_peito, nm_peito, qt_carga, qt_repeticoes, qt_vezes)
+        values ($repetevezes,'$peito3',$cargapeito3,$repeticoespeito3,'1')");
+        $idpeito3 = mysqli_insert_id($link);
+        if(!$inserepeito)
+        {
+            $error = true;
+        }
+
+        $inserecostas = $link->query("insert into tb_costas (cd_costas ,nm_costas, qt_carga, qt_repeticoes, qt_vezes)
+        values ($repetevezes,'$costas3',$cargacostas3,$repeticoescostas3,'1')");
+        $idcostas3 = mysqli_insert_id($link);
+
+        if(!$inserecostas)
+        {
+            $error = true;       
+            var_dump($error);        
+        }
+
+        $insereperna = $link->query("insert into tb_perna (cd_perna, nm_perna, qt_carga, qt_repeticoes, qt_vezes)
+        values ($repetevezes,'$perna3',$cargaperna3,$repeticoesperna3,'1')");
+        $idperna3 = mysqli_insert_id($link);
+
+        if(!$insereperna)
+        {
+            $error = true;
+            var_dump($error);    
+        }
+
+        $insereabdomem = $link->query("insert into tb_abdomem (cd_abdomem, nm_abdomem, qt_carga, qt_repeticoes, qt_vezes)
+        values ($repetevezes,'$abdomem3',$cargaabdomem3,$repeticoesabdomem3,'1')");
+        $idabdomem3 = mysqli_insert_id($link);
+
+        if(!$insereabdomem)
+        {
+            $error = true;
+            var_dump($error);    
+        }
+
+        $insereuser = $link->query("insert into tb_user (cd_biceps, cd_triceps, cd_abdomem, cd_peito, 
+        cd_costas, cd_perna, nm_user, cd_senha,  dt_ano, qt_kg, sg_sexo) 
+        values ('$idbiceps3', '$idtriceps3', '$idabdomem3','$idpeito3', '$idcostas3', '$idperna3',
+        '$name', '$cdsenha', '$ano', '$peso', '$sexo')");
+         $iduser3 = mysqli_insert_id($link);
+
+        if(!$insereuser)
+        {
+            $error = true;
+                //decrementa user
+                var_dump($error);    
+        }
+
+        if($error == true)
+        {
+            echo "Erro ".$msgerro; 
+            var_dump($link->error);
+        }
+
+        break;
+
+    case 4:
+    
+        $inseretriceps = $link->query("insert into tb_triceps (cd_triceps,nm_triceps, qt_carga, qt_repeticoes, qt_vezes)
+        values ($repetevezes,'$triceps4',$cargatriceps4,$repeticoestriceps4,'1')");
+        $idtriceps4 = mysqli_insert_id($link);
+
+        if(!$inseretriceps)
+        {
+            //var_dump($link->error);
+            $error = true;
+        }
+
+        $inserebiceps = $link->query("insert into tb_biceps (cd_biceps ,nm_biceps, qt_carga, qt_repeticoes, qt_vezes)
+        values ($repetevezes,'$biceps4',$cargabiceps4,$repeticoesbiceps4,'1')");
+        $idbiceps4 = mysqli_insert_id($link);
+
+        if(!$inserebiceps)
+        {
+            $error = true;
+            var_dump($error);    
+        }
+
+        $inserepeito = $link->query("insert into tb_peito (cd_peito, nm_peito, qt_carga, qt_repeticoes, qt_vezes)
+        values ($repetevezes,'$peito4',$cargapeito4,$repeticoespeito4,'1')");
+        $idpeito4 = mysqli_insert_id($link);
+        if(!$inserepeito)
+        {
+            $error = true;
+        }
+
+        $inserecostas = $link->query("insert into tb_costas (cd_costas ,nm_costas, qt_carga, qt_repeticoes, qt_vezes)
+        values ($repetevezes,'$costas4',$cargacostas4,$repeticoescostas4,'1')");
+        $idcostas4 = mysqli_insert_id($link);
+
+        if(!$inserecostas)
+        {
+            $error = true;       
+            var_dump($error);        
+        }
+
+        $insereperna = $link->query("insert into tb_perna (cd_perna, nm_perna, qt_carga, qt_repeticoes, qt_vezes)
+        values ($repetevezes,'$perna4',$cargaperna4,$repeticoesperna4,'1')");
+        $idperna4 = mysqli_insert_id($link);
+
+        if(!$insereperna)
+        {
+            $error = true;
+            var_dump($error);    
+        }
+
+        $insereabdomem = $link->query("insert into tb_abdomem (cd_abdomem, nm_abdomem, qt_carga, qt_repeticoes, qt_vezes)
+        values ($repetevezes,'$abdomem4',$cargaabdomem4,$repeticoesabdomem4,'1')");
+        $idabdomem4 = mysqli_insert_id($link);
+
+        if(!$insereabdomem)
+        {
+            $error = true;
+            var_dump($error);    
+        }
+
+        $insereuser = $link->query("insert into tb_user (cd_biceps, cd_triceps, cd_abdomem, cd_peito, 
+        cd_costas, cd_perna, nm_user, cd_senha,  dt_ano, qt_kg, sg_sexo) 
+        values ('$idbiceps4', '$idtriceps4', '$idabdomem4','$idpeito4', '$idcostas4', '$idperna4',
+        '$name', '$cdsenha', '$ano', '$peso', '$sexo')");
+         $iduser4 = mysqli_insert_id($link);
+
+        if(!$insereuser)
+        {
+            $error = true;
+                //decrementa user
+                var_dump($error);    
+        }
+
+        if($error == true)
+        {
+            echo "Erro ".$msgerro; 
+            var_dump($link->error);
+        }
+
+        break;
+
+    case 5:
+    
+        $inseretriceps = $link->query("insert into tb_triceps (cd_triceps,nm_triceps, qt_carga, qt_repeticoes, qt_vezes)
+        values ($repetevezes,'$triceps5',$cargatriceps5,$repeticoestriceps5,'1')");
+        $idtriceps5 = mysqli_insert_id($link);
+
+        if(!$inseretriceps)
+        {
+            //var_dump($link->error);
+            $error = true;
+        }
+        
+        $inserebiceps = $link->query("insert into tb_biceps (cd_biceps ,nm_biceps,   qt_carga, qt_repeticoes, qt_vezes)
+        values ($repetevezes,'$biceps5',$cargabiceps5,$repeticoesbiceps5,'1')");
+        $idbiceps5 = mysqli_insert_id($link);
+
+        if(!$inserebiceps)
+        {
+            $error = true;
+            var_dump($error);    
+        }
+
+        $inserepeito = $link->query("insert into tb_peito (cd_peito, nm_peito,   qt_carga, qt_repeticoes, qt_vezes)
+        values ($repetevezes,'$peito5',$cargapeito5,$repeticoespeito5,'1')");
+        $idpeito5 = mysqli_insert_id($link);
+        if(!$inserepeito)
+        {
+            $error = true;
+        }
+
+        $inserecostas = $link->query("insert into tb_costas (cd_costas ,nm_costas,   qt_carga, qt_repeticoes, qt_vezes)
+        values ($repetevezes,'$costas5',$cargacostas5,$repeticoescostas5,'1')");
+        $idcostas5 = mysqli_insert_id($link);
+
+        if(!$inserecostas)
+        {
+            $error = true;       
+            var_dump($error);        
+        }
+
+        $insereperna = $link->query("insert into tb_perna (cd_perna, nm_perna,   qt_carga, qt_repeticoes, qt_vezes)
+        values ($repetevezes,'$perna5',$cargaperna5,$repeticoesperna5,'1')");
+        $idperna5 = mysqli_insert_id($link);
+
+        if(!$insereperna)
+        {
+            $error = true;
+            var_dump($error);    
+        }
+
+        $insereabdomem = $link->query("insert into tb_abdomem (cd_abdomem, nm_abdomem,   qt_carga, qt_repeticoes, qt_vezes)
+        values ($repetevezes,'$abdomem5',$cargaabdomem5,$repeticoesabdomem5,'1')");
+        $idabdomem5 = mysqli_insert_id($link);
+
+        if(!$insereabdomem)
+        {
+            $error = true;
+            var_dump($error);    
+        }
+
+        $insereuser = $link->query("insert into tb_user (cd_biceps, cd_triceps, cd_abdomem, cd_peito, 
+        cd_costas, cd_perna, nm_user, cd_senha,  dt_ano, qt_kg, sg_sexo) 
+        values ('$idbiceps5', '$idtriceps5', '$idabdomem5','$idpeito5', '$idcostas5', '$idperna5',
+        '$name', '$cdsenha', '$ano', '$peso', '$sexo')");
+         $iduser5 = mysqli_insert_id($link);
+
+        if(!$insereuser)
+        {
+            $error = true;
+                //decrementa user
+                var_dump($error);    
+        }
+
+        if($error == true)
+        {
+            echo "Erro ".$msgerro; 
+            var_dump($link->error);
+        }
+        break;
+
 }
+    $repetevezes++;
+}
+
+
+
+
+
+
+
+
+
+
+
 
 //ok
-$insereabdomem = $link->query("insert into tb_abdomem (cd_abdomem, nm_abdomem, ds_treino, qt_carga, qt_repeticoes, qt_vezes)
-values ($iddabdomem, 'testee', 'testee', '30', '10','1')");
-$idabdomem = mysqli_insert_id($link);
-
-if(!$insereabdomem)
-{
-    $error = true;
-    var_dump($error);    
-}
 
 
-$insereuser = $link->query("insert into tb_user (cd_biceps, cd_triceps, cd_abdomem, cd_peito, 
-cd_costas, cd_perna, nm_user, cd_senha,  dt_ano, qt_kg, sg_sexo) 
-values ('$idbiceps', '$idtriceps', '$idabdomem','$idpeito', '$idcostas', '$idperna',
-'$name', '$cdsenha', '$ano', '$peso', '$sexo')");
- $iduser = mysqli_insert_id($link);
 
-if(!$insereuser)
-{
-    $error = true;
-        //decrementa user
-        var_dump($error);    
-}
 
-if($error == true)
-{
-    echo "Erro ".$msgerro; 
-    var_dump($link->error);
-}
 
 //inserir os cds 
 
-$insereidtriceps = $link->query("insert into tb_triceps cd_triceps values ($iduser)");
-if(!$insereidtriceps)
-{
+//$insereidtriceps = $link->query("insert into tb_triceps cd_triceps values ($iduser)");
+//if(!$insereidtriceps)
+//{
     //var_dump($link->error);
-    $error = true;
-}
+  //  $error = true;
+//}
 
 
 
@@ -297,10 +649,10 @@ if(!$insereidtriceps)
 
 
 //pegar todos os registros apos o cadastro e jogar na tela.
-//ja temos todos os registros do BD no fonte.
+//ja temos todos os registros do BD no fonte. 
 
 //id do user
-$queryuser = $link->query("SELECT * FROM tb_user where cd_user = $iduser");
+$queryuser = $link->query("SELECT * FROM tb_user where cd_user = $iduser1");
 
 while($reguser = $queryuser->fetch_array()) 
 {
@@ -308,7 +660,7 @@ while($reguser = $queryuser->fetch_array())
 }
 
 //TRICEPS
-$querytriceps = $link->query("SELECT * FROM tb_triceps where id_triceps = $idtriceps");
+$querytriceps = $link->query("SELECT * FROM tb_triceps where id_triceps = $idtriceps1");
 
 while($regtriceps = $querytriceps->fetch_array())
 {
@@ -318,7 +670,7 @@ while($regtriceps = $querytriceps->fetch_array())
 echo"<BR>";
 
 //BICEPS
-$querybiceps = $link->query("SELECT * FROM tb_biceps where id_biceps = $idbiceps");
+$querybiceps = $link->query("SELECT * FROM tb_biceps where id_biceps = $idbiceps1");
 
 while($regbiceps = $querybiceps->fetch_array())
 {
@@ -328,7 +680,7 @@ while($regbiceps = $querybiceps->fetch_array())
 echo"<BR>";
 
 //PEITO
-$querypeito = $link->query("SELECT * FROM tb_peito where id_peito = $idpeito");
+$querypeito = $link->query("SELECT * FROM tb_peito where id_peito = $idpeito1");
 
 while($regpeito = $querypeito->fetch_array())
 {
@@ -338,7 +690,7 @@ while($regpeito = $querypeito->fetch_array())
 echo"<BR>";
 
 //COSTAS
-$querycostas = $link->query("SELECT * FROM tb_costas where id_costas = $idcostas");
+$querycostas = $link->query("SELECT * FROM tb_costas where id_costas = $idcostas1");
 
 while($regcostas = $querycostas->fetch_array())
 {
@@ -348,7 +700,7 @@ while($regcostas = $querycostas->fetch_array())
 echo "<BR>";
 
 //PERNA
-$queryperna = $link->query("SELECT * FROM tb_perna where id_perna = $idperna");
+$queryperna = $link->query("SELECT * FROM tb_perna where id_perna = $idperna1");
 
 while($regperna = $queryperna->fetch_array())
 {
@@ -358,7 +710,7 @@ while($regperna = $queryperna->fetch_array())
 echo "<BR>";
 
 //ABDOMEM
-$queryabdomem = $link->query("SELECT * FROM tb_abdomem where id_abdomem = $idabdomem");
+$queryabdomem = $link->query("SELECT * FROM tb_abdomem where id_abdomem = $idabdomem1");
 
 while($regabdomem = $queryabdomem->fetch_array())
 {
@@ -496,12 +848,10 @@ if (strtoupper($opTreino) == "A" )
                 //echo ("Digito invalido");
             }
             */
+        
 ?>
 </div>
 
 <body>
 
 </html>
-
-
-
