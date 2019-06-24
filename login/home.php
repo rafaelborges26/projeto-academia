@@ -664,9 +664,15 @@ $querytriceps = $link->query("SELECT * FROM tb_triceps where id_triceps = $idtri
 
 while($regtriceps = $querytriceps->fetch_array())
 {
-    echo $regtriceps["nm_triceps"];
+    $nmtriceps[$i] = $regtriceps["nm_triceps"];
+    $dstreinotriceps[$i] = $regtriceps["ds_treino"];
+    $qtcargatriceps[$i] = $regtriceps["qt_carga"];
+    $qtrepeticoestriceps[$i] = $regtriceps["qt_repeticoes"];
+    $i++;
 }
 
+echo $nmtriceps;
+    
 echo"<BR>";
 
 //BICEPS
@@ -674,9 +680,13 @@ $querybiceps = $link->query("SELECT * FROM tb_biceps where id_biceps = $idbiceps
 
 while($regbiceps = $querybiceps->fetch_array())
 {
-    echo $regbiceps["nm_biceps"];
+    $nmbiceps = $regbiceps["nm_biceps"];
+    $dstreinobiceps = $regbiceps["ds_treino"];
+    $qtcargabiceps = $regbiceps["qt_carga"];
+    $qtrepeticoesbiceps = $regbiceps["qt_repeticoes"];
 }
 
+echo $nmbiceps;    
 echo"<BR>";
 
 //PEITO
@@ -684,9 +694,14 @@ $querypeito = $link->query("SELECT * FROM tb_peito where id_peito = $idpeito1");
 
 while($regpeito = $querypeito->fetch_array())
 {
-    echo $regpeito["nm_peito"];
+    $nmpeito = $regpeito["nm_peito"];
+    $dstreinopeito = $regpeito["ds_treino"];
+    $qtcargapeito = $regpeito["qt_carga"];
+    $qtrepeticoespeito = $regpeito["qt_repeticoes"];
 }
 
+echo $nmpeito;
+    
 echo"<BR>";
 
 //COSTAS
@@ -694,12 +709,15 @@ $querycostas = $link->query("SELECT * FROM tb_costas where id_costas = $idcostas
 
 while($regcostas = $querycostas->fetch_array())
 {
-    $nmperna = $regacostas["nm_perna"];
-    $dstreinoperna = $regcostas["ds_treino"];
-    $qtcargaperna = $regcostas["qt_carga"];
-    $qtrepeticoesperna = $regcostas["qt_repeticoes"];
+    $nmperna = $regacostas["nm_costas"];
+    $dstreinocostas = $regcostas["ds_treino"];
+    $qtcargacostas = $regcostas["qt_carga"];
+    $qtrepeticoescostas = $regcostas["qt_repeticoes"];
 }
 
+    
+echo $nmcostas;
+    
 echo "<BR>";
 
 //PERNA
@@ -727,7 +745,7 @@ while($regabdomem = $queryabdomem->fetch_array())
     $qtrepeticoesabdomem = $regabdomem["qt_repeticoes"];
 }
 
-echo $nmabdomem;
+echo $nmabdomem;//verificar o nmtriceps[1] se vai dar bom se for fazer o looping preenchendo os campos de td
 ?>
 
 <table class="table table-hover">
@@ -742,7 +760,7 @@ echo $nmabdomem;
   </thead>
   <tbody>
     <tr class="table-dark">
-      <td><?php echo $nmabdomem?></td>
+      <td><?php echo $nmtriceps[1]?></td>
       <td>Column content</td>
       <td>Column content</td>
       <td>Column content</td>
