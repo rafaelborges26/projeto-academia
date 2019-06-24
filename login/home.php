@@ -694,7 +694,10 @@ $querycostas = $link->query("SELECT * FROM tb_costas where id_costas = $idcostas
 
 while($regcostas = $querycostas->fetch_array())
 {
-    echo $regcostas["nm_costas"];
+    $nmperna = $regacostas["nm_perna"];
+    $dstreinoperna = $regcostas["ds_treino"];
+    $qtcargaperna = $regcostas["qt_carga"];
+    $qtrepeticoesperna = $regcostas["qt_repeticoes"];
 }
 
 echo "<BR>";
@@ -704,8 +707,12 @@ $queryperna = $link->query("SELECT * FROM tb_perna where id_perna = $idperna1");
 
 while($regperna = $queryperna->fetch_array())
 {
-    echo $regperna["nm_perna"];
+    $nmperna = $regperna["nm_perna"];
+    $dstreinoperna = $regperna["ds_treino"];
+    $qtcargaperna = $regperna["qt_carga"];
+    $qtrepeticoesperna = $regperna["qt_repeticoes"];
 }
+echo $nmperna;
 
 echo "<BR>";
 
@@ -715,9 +722,9 @@ $queryabdomem = $link->query("SELECT * FROM tb_abdomem where id_abdomem = $idabd
 while($regabdomem = $queryabdomem->fetch_array())
 {
     $nmabdomem = $regabdomem["nm_abdomem"];
-    $dstreino = $regabdomem["ds_treino"];
-    $qtcarga = $regabdomem["qt_carga"];
-    $qtrepeticoes = $regabdomem["qt_repeticoes"];
+    $dstreinoabdomem = $regabdomem["ds_treino"];
+    $qtcargaabdomem = $regabdomem["qt_carga"];
+    $qtrepeticoesabdomem = $regabdomem["qt_repeticoes"];
 }
 
 echo $nmabdomem;
